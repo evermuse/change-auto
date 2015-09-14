@@ -1,16 +1,15 @@
 function getVehicle() {
 
- //debugger;
-
   var vehicleType = document.getElementById('vehicle').value.toLowerCase();
 
-  if (vehicleType === null || vehicleType === undefined) {
+  if (vehicleType === null || vehicleType === undefined || vehicleType === '') {
 
     alert('Please enter a vehicle');
 
   } else {
 
-    vehicleFactory(vehicleType);
+    var newVehicle = vehicleFactory(vehicleType);
+    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newVehicle.name + ' was created.' + '<br><br>' + Object.keys(newVehicle));
 
   }
 
@@ -18,33 +17,21 @@ function getVehicle() {
 
 function vehicleFactory(vehicleType) {
 
-  debugger;
+  if (vehicleType === 'car' ) {
 
-  if (vehicleType === '') {
-
-    alert('Please enter a vehicle');
-
-  } else if (vehicleType === 'car' ) {
-
-    var newCar = new Vehicle('car', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardTrunk');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newCar.name + ' was created.' + '<br><br>' + Object.keys(newCar));
-    return newCar;
+    return new Car('car', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardTrunk');
 
   } else if (vehicleType === 'truck') {
 
-    var newTruck = new Vehicle('truck', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardCargoBed');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newTruck.name + ' was created.' + '<br><br>' + Object.keys(newTruck));
-    return newTruck;
+    return new Truck('truck', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardCargoBed');
 
   } else if (vehicleType === 'minivan') {
 
-    var newMinivan = new Vehicle('minivan', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardRearDoor');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newMinivan.name + ' was created.' + '<br><br>' + Object.keys(newMinivan));
-    return newMinivan;
+    return new Minivan('minivan', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardRearDoor');
 
   } else {
 
-    alert('Hmm... can\'t find that vehicle. Please enter \'car\' \'truck\', or \'minivan\'. K-thx!');
+    alert('Hmm... can\'t find that vehicle. Please enter \'car\' \'truck\', or \'minivan\'. Thx!');
 
   }
 
@@ -63,7 +50,7 @@ function Vehicle(name, chassis, color, engine, transmission, tires) {
 
 function Car(name, chassis, color, engine, transmission, tires, trunk) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires, trunk);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
 
   this.trunk = trunk;
 
@@ -79,7 +66,7 @@ Car.prototype = Object.create(Vehicle.prototype, {
 
 function Truck(name, chassis, color, engine, transmission, tires, cargoBed) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires, cargoBed);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
 
   this.cargoBed = cargoBed;
 
@@ -95,7 +82,7 @@ Truck.prototype = Object.create(Vehicle.prototype, {
 
 function Minivan(name, chassis, color, engine, transmission, tires, rearDoor) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires, rearDoor);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
 
   this.rearDoor = rearDoor;
 
