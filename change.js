@@ -1,6 +1,6 @@
 function getVehicle() {
 
- //  debugger;
+ //debugger;
 
   var vehicleType = document.getElementById('vehicle').value.toLowerCase();
 
@@ -18,6 +18,8 @@ function getVehicle() {
 
 function vehicleFactory(vehicleType) {
 
+  debugger;
+
   if (vehicleType === '') {
 
     alert('Please enter a vehicle');
@@ -25,21 +27,19 @@ function vehicleFactory(vehicleType) {
   } else if (vehicleType === 'car' ) {
 
     var newCar = new Vehicle('car', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardTrunk');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newCar.name + ' was created.');
-
-    //document.getElementById('output').innerHTML = "<textarea name='vehicleResult' style='border:0px;text-align:center' border='0' rows = '6' cols = '50'></textarea><br/><input type='reset' value='Reset' />";
+    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newCar.name + ' was created.' + '<br><br>' + Object.keys(newCar));
     return newCar;
 
   } else if (vehicleType === 'truck') {
 
     var newTruck = new Vehicle('truck', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardCargoBed');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newTruck.name + ' was created.');
+    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newTruck.name + ' was created.' + '<br><br>' + Object.keys(newTruck));
     return newTruck;
 
   } else if (vehicleType === 'minivan') {
 
     var newMinivan = new Vehicle('minivan', 'standardChassis', 'white', 'fourCynlinder', 'auto', 'standard', 'standardRearDoor');
-    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newMinivan.name + ' was created.');
+    console.log(document.getElementById('output').innerHTML = 'Congratulations! A ' + newMinivan.name + ' was created.' + '<br><br>' + Object.keys(newMinivan));
     return newMinivan;
 
   } else {
@@ -63,7 +63,7 @@ function Vehicle(name, chassis, color, engine, transmission, tires) {
 
 function Car(name, chassis, color, engine, transmission, tires, trunk) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires, trunk);
 
   this.trunk = trunk;
 
@@ -77,9 +77,9 @@ Car.prototype = Object.create(Vehicle.prototype, {
 
 });
 
-function Truck(name, chassis, color, engine, transmission, tires, trunk) {
+function Truck(name, chassis, color, engine, transmission, tires, cargoBed) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires, cargoBed);
 
   this.cargoBed = cargoBed;
 
@@ -93,9 +93,9 @@ Truck.prototype = Object.create(Vehicle.prototype, {
 
 });
 
-function Minivan(name, chassis, color, engine, transmission, tires, trunk) {
+function Minivan(name, chassis, color, engine, transmission, tires, rearDoor) {
 
-  Vehicle.call(this, name, chassis, color, engine, transmission, tires);
+  Vehicle.call(this, name, chassis, color, engine, transmission, tires, rearDoor);
 
   this.rearDoor = rearDoor;
 
