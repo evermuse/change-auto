@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="change.js"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body onload="document.chooseVehicle.vehicle.focus()">
+
+  <h3>Which Vehicle?</h3>
+
+  <form action="" name="" method="" onreset="document.chooseVehicle.vehicle.focus();document.getElementById('output').innerHTML = '';">
+    <input type="text" placeholder="Enter vehicle here..." name="vehicle" id="vehicle">
+    <br><br>
+    <input class="button" type="button" onclick="getVehicle()" value="Submit">
+    <input type="reset" value="Reset">
+  </form>
+
+  <br>
+
+  <div id="output">
+
+
+  </div>
+
+</body>
+</html>
